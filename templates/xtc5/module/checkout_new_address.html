@@ -1,0 +1,85 @@
+{config_load file="$language/lang_$language.conf" section="address_book_process"}
+{config_load file="$language/lang_$language.conf" section="checkout_new_address"}
+<h2>{if isset($smarty.get.action) && $smarty.get.action == 'edit'}{#title_edit_address#}{else}{#title_new_address#}{/if} ({#text_must#})</h2>
+{if !isset($smarty.get.action) || $smarty.get.action == 'new'}<p>{#text_new_address#}</p>{/if}
+
+<div class="highlightbox">
+<table width="100%" border="0" cellspacing="2" cellpadding="0">
+  {if $gender == '1'}
+  <tr>
+    <td>{#text_gender#}</td>
+    <td>{$INPUT_GENDER}</td>
+  </tr>
+  {/if}
+  <tr>
+    <td >{#text_firstname#}</td>
+    <td align="left">{$INPUT_FIRSTNAME}</td>
+  </tr>
+  <tr>
+    <td>{#text_lastname#}</td>
+    <td align="left">{$INPUT_LASTNAME}</td>
+  </tr>
+  {if $company == '1'}
+  <tr>
+    <td>&nbsp;</td>
+    <td align="left"></td>
+  </tr>
+  <tr>
+    <td>{#text_company#}</td>
+    <td align="left">{$INPUT_COMPANY}</td>
+  </tr>
+  {/if}
+  <tr>
+    <td>&nbsp;</td>
+    <td align="left"></td>
+  </tr>
+  <tr>
+    <td >{#text_street#}</td>
+    <td align="left">{$INPUT_STREET}</td>
+  </tr>
+  {if $suburb == '1'}
+  <tr>
+    <td>{#text_suburb#}</td>
+    <td align="left">{$INPUT_SUBURB}</td>
+  </tr>
+  {/if}
+  <tr>
+    <td>{#text_code#}</td>
+    <td align="left">{$INPUT_CODE}</td>
+  </tr>
+  <tr>
+    <td>{#text_city#}</td>
+    <td align="left">{$INPUT_CITY}</td>
+  </tr>
+  <tr>
+    <td>{#text_country#}</td>
+    <td align="left">{$SELECT_COUNTRY}</td>
+  </tr>
+  {if $state == '1'}
+  <tr{if $display_state}{$display_state}{/if}>
+    <td>{#text_state#}</td>
+    <td align="left">{$INPUT_STATE}</td>
+  </tr>
+  {/if}
+  {if isset($new) && $new == '1'}
+  <tr>
+    <td>&nbsp;</td>
+    <td align="left">{$CHECKBOX_PRIMARY} {#text_standard#}</td>
+  </tr>
+  {/if}
+
+  {if isset($CHECKBOX_EDIT_ADDRESS)}
+  <tr>
+    <td>&nbsp;</td>
+    <td align="left">{$CHECKBOX_EDIT_ADDRESS} {#text_edit_address_note#}</td>
+  </tr>
+  {/if}
+</table>
+
+{if isset($MAX_ADDRESS_NOTE)}
+  <br />
+  <div class="errormessage">{$MAX_ADDRESS_NOTE}</div>
+{/if}
+
+{if isset($PARAMS)}{$PARAMS}{/if}
+</div>

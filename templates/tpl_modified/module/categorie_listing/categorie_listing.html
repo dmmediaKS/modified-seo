@@ -1,0 +1,27 @@
+{config_load file="$language/lang_$language.conf" section="categorie_listing"}
+{config_load file="lang_`$language`.custom"}
+{config_load file="lang_`$language`.section" section="categorie_listing"}
+{if isset($CATEGORIES_HEADING_TITLE) && $CATEGORIES_HEADING_TITLE != ''}
+  <h1>{$CATEGORIES_HEADING_TITLE}</h1>
+{else}
+  <h1>{$CATEGORIES_NAME}</h1>
+{/if}
+{if $error_message}<div class="errormessage">{$error_message}</div>{/if}
+{if (isset($CATEGORIES_DESCRIPTION) && $CATEGORIES_DESCRIPTION != '')
+     || (isset($CATEGORIES_SHORT_DESCRIPTION) && $CATEGORIES_SHORT_DESCRIPTION != '')
+     || (isset($CATEGORIES_IMAGE) && $CATEGORIES_IMAGE != '')
+     }
+<div class="cat_description cf">
+  {if isset($CATEGORIES_IMAGE) && $CATEGORIES_IMAGE != ''}<img class="cat_image{if !$CATEGORIES_DESCRIPTION} ci_nomargin{/if}" src="{$CATEGORIES_IMAGE}" alt="{$CATEGORIES_NAME|onlytext}" />{/if}
+  {if isset($CATEGORIES_SHORT_DESCRIPTION) && $CATEGORIES_SHORT_DESCRIPTION != ''}{$CATEGORIES_SHORT_DESCRIPTION}{else if isset($CATEGORIES_DESCRIPTION) && $CATEGORIES_DESCRIPTION != ''}{$CATEGORIES_DESCRIPTION}{/if}
+</div>
+{/if}
+
+{if isset($CATEGORIES_LISTING)}{$CATEGORIES_LISTING}{/if}
+{if isset($MODULE_new_products)}{$MODULE_new_products}{/if}
+
+{if isset($CATEGORIES_SHORT_DESCRIPTION) && $CATEGORIES_SHORT_DESCRIPTION != '' && isset($CATEGORIES_DESCRIPTION) && $CATEGORIES_DESCRIPTION != ''}
+<div class="cat_description bottom cf">
+  {$CATEGORIES_DESCRIPTION}
+</div>
+{/if}

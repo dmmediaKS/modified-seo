@@ -1,0 +1,8 @@
+{if isset($module_content)}
+  <h4 class="detailbox">{#heading_text#}</h4>
+  <div class="listingcontainer_details cf">
+  {foreach name=aussen item=module_data from=$module_content}
+    {include file="module/includes/product_info_include.html"}
+  {/foreach}
+  </div>
+{/if}
