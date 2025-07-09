@@ -264,6 +264,13 @@ if (count($admin_access) > 0) {
   }
   endMenue(BOX_HEADING_CONFIGURATION2);
 }
+// ganz unten im <ul> der Admin-Navigation
+<li>
+  <a href="<?php echo xtc_href_link('clean_seo_url.php'); ?>">
+    <i class="fa fa-link"></i>
+    <span>Clean SEO URL</span>
+  </a>
+</li>
 
 echo '</ul>'; 
 echo '</div>';
